@@ -1,0 +1,49 @@
+package ku.cs.models;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StudentTest {
+    static Student s;
+    @BeforeEach
+    void init() {
+        s = new Student("6710451518","Caping");
+    }
+
+    // จำเป็นต้องมีถ้าจะเขียน test
+    @Test
+    @DisplayName("ทดสอบการเพิ่มคะแนน 45.15 คะแนน")
+    void testAddScore(){        // return type void only
+        Student s = new Student("6710451518","test");
+        s.addScore(40);
+        assertEquals(40,s.getScore());     // ห้ามแก้ expected
+        s.addScore(0);
+        assertEquals(40,s.getScore());
+    }
+    @Test
+    @DisplayName("ทดสอบการเพิ่มคะแนน 85 คะแนน และให้ Object คำนวนเกรดออกมา")
+    void testCalculateGrade(){
+
+        s.addScore(30);
+        assertEquals("F",s.grade());
+        // cuz obj is static and เป็น Beforeeach ทำให้ obj แยกกันได้
+    }
+    @Test
+    @DisplayName("IDchecker")
+    void testIdchecker(){
+        s.isId("6610451975");
+        assertSame(true,s.isId("6710451518"));
+    }
+    @Test
+    @DisplayName("เปลี่ยนชื่อ")
+    void testchageName(){
+        s.changeName("test");
+        assertEquals("test",s.getName());
+    }
+
+
+
+}
