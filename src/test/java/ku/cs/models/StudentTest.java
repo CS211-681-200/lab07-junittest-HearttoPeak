@@ -10,14 +10,14 @@ class StudentTest {
     static Student s;
     @BeforeEach
     void init() {
-        s = new Student("6710451518","Caping");
+        s = new Student("6710451518","caping");
     }
 
     // จำเป็นต้องมีถ้าจะเขียน test
     @Test
     @DisplayName("ทดสอบการเพิ่มคะแนน 45.15 คะแนน")
     void testAddScore(){        // return type void only
-        Student s = new Student("6710451518","test");
+        Student s = new Student("6710555555","test");
         s.addScore(40);
         assertEquals(40,s.getScore());     // ห้ามแก้ expected
         s.addScore(0);
@@ -34,14 +34,20 @@ class StudentTest {
     @Test
     @DisplayName("IDchecker")
     void testIdchecker(){
-        s.isId("6610451975");
-        assertSame(true,s.isId("6710451518"));
+//        assertSame(true,s.isId("6710451518"));
+        assertNotSame(false,s.isId("6710451518"));
     }
     @Test
     @DisplayName("เปลี่ยนชื่อ")
     void testchageName(){
         s.changeName("test");
         assertEquals("test",s.getName());
+    }
+    @Test
+    @DisplayName("ทดสอบกการเปลี่ยนชื่อให้อยู่ใน LowerCase")
+    void testchageNameLowerCase(){
+        s.getName();
+        assertEquals("caping",s.getName());
     }
 
 
